@@ -1,34 +1,29 @@
 --Q1 Stored Procedure--
 
-CREATE OR REPLACE PROCEDURE add_film(
-	film_id INTEGER,
-	title VARCHAR(50),
-	description VARCHAR(100),
-	release_year VARCHAR,
+CREATE OR REPLACE PROCEDURE add_film_2(
+	title VARCHAR(250),
+	description VARCHAR,
+	release_year INTEGER,
 	language_id INTEGER,
 	rental_duration INTEGER,
 	rental_rate NUMERIC(4,2),
 	length INTEGER,
 	replacement_cost NUMERIC(5,2),
-	rating VARCHAR
+	rating mpaa_rating
 )
 LANGUAGE plpgsql 
 AS $$ 
 BEGIN 
-	INSERT INTO film(film_id, title, description, release_year, language_id, rental_duration, rental_rate,
+	INSERT INTO film(title, description, release_year, language_id, rental_duration, rental_rate,
 	length, replacement_cost, rating)
-	VALUES(film_id, title, description, release_year, language_id, rental_duration, rental_rate,
+	VALUES(title, description, release_year, language_id, rental_duration, rental_rate,
 	length, replacement_cost, rating);
 END
 $$
 
+CALL add_film_2('A Cat too Far', 'Pspspspspspsps', 2006, 1, 7, 2.99, 120, 99.99, 'G');
 
-SELECT*
-FROM film;
-
-CALL add_film(34, 'A Cat too Far', 'Pspspspspspsps', 2006, 1, 7, 2.99, 120, 99.99, 'G');
---it will not run!--
-
+SELECT * FROM film WHERE title LIKE 'A Cat too Far%';
 
 
 

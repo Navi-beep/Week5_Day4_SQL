@@ -10,7 +10,7 @@ CREATE OR REPLACE PROCEDURE add_film(
 	rental_rate NUMERIC(4,2),
 	length INTEGER,
 	replacement_cost NUMERIC(5,2),
-	rating VARCHAR(5)
+	rating VARCHAR
 )
 LANGUAGE plpgsql 
 AS $$ 
@@ -26,7 +26,7 @@ $$
 SELECT*
 FROM film;
 
-CALL add_film('1234', 'A Cat too Far', 'Pspspspspspsps', '2006', '1', '7', '2.99', '120', '99.99', 'PG');
+CALL add_film(34, 'A Cat too Far', 'Pspspspspspsps', 2006, 1, 7, 2.99, 120, 99.99, 'G');
 --it will not run!--
 
 
